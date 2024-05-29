@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Perdi todo o código da aula, não achei em nenhum lugar. Tive que fazer do zero, por isso um arquivo apenas, além de 2 trechos que precisei pesquisar  -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Combustível</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #c3da71;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input {
+            margin: 10px;
+            padding: 8px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .calculate {
+            background-color: #28a745;
+            color: white;
+        }
+        .reset {
+            background-color: #dc3545;
+            color: white;
+        }
+        .result img {
+            width: 100px;
+            height: auto;
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora PetroLuanBras</h2>
+        <input type="number" id="etanol" placeholder="Preço do Etanol (R$)" step="0.01">
+        <input type="number" id="gasolina" placeholder="Preço da Gasolina (R$)" step="0.01">
+        <div>
+            <button class="calculate" onclick="calcular()">Calcular</button>
+            <button class="reset" onclick="limpar()">Limpar</button>
+        </div>
+        <div class="result">
+            <img id="etanolImage" src="imgs/tanqueEtanol.png" alt="Tanque de Etanol">
+            <img id="gasolinaImage" src="imgs/tanqueGasolina.png" alt="Tanque de Gasolina">
+        </div>
+    </div>
+    <script>
+        function calcular() {
+            const etanol = parseFloat(document.getElementById('etanol').value)
+            const gasolina = parseFloat(document.getElementById('gasolina').value)
+            const etanolImage = document.getElementById('etanolImage')
+            const gasolinaImage = document.getElementById('gasolinaImage')
+
+          
+
+            if (etanol / gasolina <= 0.7) {
+                etanolImage.style.display = 'block'
+                gasolinaImage.style.display = 'none'
+            } else {
+                etanolImage.style.display = 'none'
+                gasolinaImage.style.display = 'block'
+            }
+        }
+
+        function limpar() {
+            document.getElementById('etanol').value = ''
+            document.getElementById('gasolina').value = ''
+            document.getElementById('etanolImage').style.display = 'none'
+            document.getElementById('gasolinaImage').style.display = 'none'
+        }
+    </script>
+</body>
+</html>
